@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+http://www.ebsi.co.kr/ebs/lms/lmsx/retrieveSbjtDtl.ebs?sbjtId=S20180001029
+
+================================================================================
+/home/young/Pictures/2019_06_01_17:14:05.png
+
+Operon: unit of transcription at one time
+
+Operon = promoter, operator, structural gene
+/home/young/Pictures/2019_06_01_17:14:28.png
+
+"Regulatory gene" is not included into operon
+/home/young/Pictures/2019_06_01_17:16:37.png
+
+================================================================================
+Promoter is the DNA place where RNA polymerase is attached
+/home/young/Pictures/2019_06_01_17:17:30.png
+
+================================================================================
+"Regulatory gene" is always activated,
+so that part is always "transcripted" and "translated",
+result in "regulatory protein"
+/home/young/Pictures/2019_06_01_17:18:50.png
+
+================================================================================
+"Regulatory protein" is attached into "operator" in DNA
+/home/young/Pictures/2019_06_01_17:19:35.png
+
+================================================================================
+Let's have practical example
+
+E_coli has "lac operon"
+
+If E_coli has glucose:
+  energy=E_coli_uses(glucose)
+
+If (E_coli has no_glucose) and (E_coli has Lactose):
+  lactase=E_coli_produces_lactase()
+  energy=E_coli_uses(Lactose,lactase)
+
+================================================================================
+Variable_condition=[lacose_exists,lactose_not_exists]
+
+ret1=E_coli_activates_lactase_gene(Variable_condition[0])
+ret1: True
+
+ret2=E_coli_activates_lactase_gene(Variable_condition[1])
+ret1: False
+
+================================================================================
+Situation: glucose
+  mRNA=transcription(regulatory_gene)
+  regulatory_protein=translation(mRNA)
+  /home/young/Pictures/2019_06_01_17:40:33.png
+
+  attach_operator_and_promoter(regulatory_protein)
+
+  ret=is_possible_to_combine(promoter,RNA_polymerase)
+  # False due to "attached regulatory protein"
+
+  ret1=is_possible_to_perform_transcription()
+  # False, because RNA_polymerase can't be attached onto promoter
+
+  ret2=is_lactase_created()
+  # False
+
+Situation: no_glucose,Lactose
+  mRNA=transcription(regulatory_gene)
+  regulatory_protein=translation(mRNA)
+
+  manipulated_regulatory_protein=combine(regulatory_protein,Lactose)
+
+  ret=is_it_possible_regulartory_protein_to_attach_to_operator(manipulated_regulatory_protein)
+  # False, because manipulated_regulatory_protein has different protein structure
+
+  combine(RNA_polymerase,promoter)
+
+  RNA=transcription(structural_gene)
+  /home/young/Pictures/2019_06_01_17:46:52.png
+
+  lactase=translation(RNA)
+
+================================================================================
+Mutant on the promoter:
+  ret=is_it_possible_for_RNA_polymerase_to_attatch_to_promoter()
+  # False
+
+  Situation (no_Lactose) or (Lactose):
+    ret1=transcription_on_structural_gene?()
+    # False
+
+Mutant on the operator:
+  ret=regulatory_protein_can_combine_to_operator?()
+  # False
+
+  ret1=Structural_gene_always_activates?()
+  # True
+
+================================================================================
+Regulation on gene expression of Eukaryota
+
+Chromosome is densely wrapped around histone protein
+
+RNA polymerase is difficult to access to DNA
+
+So, chromosome should be losen a bit (chromatin decondensated)
+
+RNA polymerase + many transcription factors can be attached to promoter
+/home/young/Pictures/2019_06_01_19:05:23.png
+
+Near transcription factor, near transcription-factor combine location in DNA
+/home/young/Pictures/2019_06_01_19:06:30.png
+
+Far transcription factor, far transcription-factor combine location in DNA
+/home/young/Pictures/2019_06_01_19:06:54.png
+
+================================================================================
+After RNA polymerase + many transcription factors are attached to promoter,
+DNA becomes curved
+/home/young/Pictures/2019_06_01_19:07:49.png
+
+This is called "transcription starting complex"
+
+================================================================================
+After forming transcription starting complex, transciption occurs
+
+================================================================================
+Transcriptor_factors: protein
+
+================================================================================
+/home/young/Pictures/2019_06_01_19:12:21.png
+
+* Raw RNA = Axon + Intron
+/home/young/Pictures/2019_06_01_19:16:58.png
+
+Intron: is transcripted but is not translated
+Intron doesn't have information for amino acid
+
+When there are axon_1, axon_2, axon_3, possible combination: 
+axon_1, axon_2, axon_3
+axon_1, axon_3
+axon_2, axon_3
+...
+
+
+* Processed RNA which can be out via nucleus pore
+/home/young/Pictures/2019_06_01_19:17:52.png
+
+================================================================================
+/home/young/Pictures/2019_06_01_19:30:34.png
+
+/home/young/Pictures/2019_06_01_19:31:46.png
+
+/home/young/Pictures/2019_06_01_19:32:21.png
+
+================================================================================
+
+</xmp>
+   </BODY>
+</HTML>
