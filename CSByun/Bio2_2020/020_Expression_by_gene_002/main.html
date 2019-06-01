@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+http://www.ebsi.co.kr/ebs/lms/lmsx/retrieveSbjtDtl.ebs?sbjtId=S20180001029
+
+================================================================================
+mRNA,rRNA,tRNA=transcription(DNA)
+
+if Eukaryota==True:
+  In nucleus:
+    mRNA,rRNA,tRNA=transcription(DNA)
+  
+================================================================================
+enzymes_for_DNA_replication=[DNA_polymerase,helicase,primer,...]
+DNA=DNA_replication(DNA,enzymes_for_DNA_replication)
+
+================================================================================
+enzymes_for_transcription=[RNA_polymerase,...]
+mRNA,rRNA,tRNA=transcription(DNA,enzymes_for_transcription)
+
+In transcription:
+  RNA_polymerase does the job of helicase,primer
+
+================================================================================
+The detail of transcription
+
+* Overview
+/home/young/Pictures/2019_06_01_14:49:14.png
+
+* RNA polymerase is attached to DAN, to start the transcription
+Note that RNA polymerase is only attached to "promoter" location in the DNA
+
+* RNA polymerase decouples DNA
+/home/young/Pictures/2019_06_01_14:54:43.png
+
+* RNA polymerase creates RNA in the direction of 5' $$$\rightarrow$$$ 3'
+Note that for transcription, only one DNA strand (3'5' one in this case) is used
+/home/young/Pictures/2019_06_01_14:55:45.png
+
+* You can see "lengthened RNA" and "recoupled DNA"
+/home/young/Pictures/2019_06_01_14:57:00.png
+
+* When RNA polymerase arrives to the end point,
+newly created RNA is separated from DNA, and RNA polymerase is also removed from the DNA
+/home/young/Pictures/2019_06_01_14:58:40.png
+
+================================================================================
+Even if RNA is created based on main-strand, but non-main-strand is still important
+
+* Suppose following (non-main-strand, main-strand)
+/home/young/Pictures/2019_06_01_15:03:53.png
+
+* Imagine newly created RNA based on main-strand (3'5')
+/home/young/Pictures/2019_06_01_15:05:00.png
+
+* Note that "non-main-strand" and "RNA" is same 
+if you replace T with U
+
+* This is why non-main-strand is also called crypto-strand
+
+================================================================================
+/home/young/Pictures/2019_06_01_15:07:19.png
+
+* Note that these are "RNA nucleotides" which has "ribose" for pentan
+/home/young/Pictures/2019_06_01_15:08:05.png
+
+================================================================================
+Direction of trascription
+
+* RNA grows from 5' to 3'
+* RNA polymerase moves along DNA-main-strand from 3' to 5'
+
+================================================================================
+Comparison between DNA replication and RNA transcription
+
+/home/young/Pictures/2019_06_01_15:11:10.png
+
+================================================================================
+* tRNA's 3D model
+/home/young/Pictures/2019_06_01_15:24:00.png
+
+* tRNA's 2D model
+/home/young/Pictures/2019_06_01_15:24:41.png
+
+* Combine tRNA with ribosome
+/home/young/Pictures/2019_06_01_15:25:51.png
+
+================================================================================
+* Ribosome: is the place where protein synthesis occurs
+
+* Lysosome: it has hydrolase, so lysosome can do "digest in the cell"
+
+================================================================================
+/home/young/Pictures/2019_06_01_15:37:55.png
+
+Ribosome = rRNA + protein
+
+In the P in the nucleus of the cell:
+  rRNA=synthesize(DNA)
+
+In the ribosome in the cytoplasm:
+  protein=synthesize(amino_acids)
+
+move_to_nucleus(protein)
+
+In the P in the nucleus of the cell:
+  sub_unit_of_ribosome,large_unit_of_ribosome=combine(rRNA,protein)
+
+move_to_cytoplasm_via_nuclear pore(sub_unit_of_ribosome,large_unit_of_ribosome)
+
+In the cytoplasm:
+  ribosome=combine(sub_unit_of_ribosome,large_unit_of_ribosome)
+
+================================================================================
+/home/young/Pictures/2019_06_01_15:38:24.png
+
+Note that there is the place where mRNA is combined in the "sub unit of ribosome"
+
+================================================================================
+/home/young/Pictures/2019_06_01_15:39:22.png
+
+There are 3 places (A: amino acid,P: polypeptides,E:exit) in the large unit of ribosome
+
+================================================================================
+1. 
+/home/young/Pictures/2019_06_01_15:55:01.png
+
+combine(mRNA,sub_unit_of_ribosome)
+There is no large_unit_of_ribosome in this stage
+
+2.
+/home/young/Pictures/2019_06_01_15:56:20.png
+
+Codon: AUG
+tRNA_with_methionine=get_tRNA_with_amino_acid(codon_AUG)
+
+complementary_hydrogen_bond(codon_of_RNA,anti_codon_of_tRNA)
+
+3
+/home/young/Pictures/2019_06_01_16:00:13.png.
+
+large_unit_of_ribosome=get_large_unit_of_ribosome()
+
+combine(sub_unit_of_ribosome,large_unit_of_ribosome)
+
+4.
+/home/young/Pictures/2019_06_01_16:18:17.png
+
+* second tRNA comes into A place and second tRNA is combined with mRNA
+/home/young/Pictures/2019_06_01_16:18:47.png
+
+5.
+/home/young/Pictures/2019_06_01_16:19:45.png
+
+* Decomple Met and "first tRNS"
+/home/young/Pictures/2019_06_01_16:20:40.png
+
+* Perform "peptide bond"
+/home/young/Pictures/2019_06_01_16:21:11.png
+
+Enzyme for "peptide bond" is located in "large_unit_of_ribosome"
+
+6.
+/home/young/Pictures/2019_06_01_16:22:04.png
+
+move_ribosome(direction=[5',3'],step_size=one_codon_or_3_bases)
+
+7.
+/home/young/Pictures/2019_06_01_16:23:42.png
+
+* Amino acid order
+/home/young/Pictures/2019_06_01_16:24:02.png
+
+* End codons: UAA,UAG,UGA
+/home/young/Pictures/2019_06_01_16:24:37.png
+
+* Importantly note that 
+there is no tRNA which has anticodon which is corresponding to "ending codon"
+
+</xmp>
+   </BODY>
+</HTML>
