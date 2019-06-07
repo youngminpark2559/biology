@@ -177,13 +177,13 @@ In NGS:
 
 ================================================================================
 Overall pipeline for SNP/Indel calling
-/home/young/Pictures/2019_06_07_08:47:08.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_08:47:08.png' alt=''><xmp>
 
 - Perform following process on "raw data", "reference sequence"
-/home/young/Pictures/2019_06_07_08:48:16.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_08:48:16.png' alt=''><xmp>
 
 - Extract genetic variation by comparing data
-/home/young/Pictures/2019_06_07_08:49:19.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_08:49:19.png' alt=''><xmp>
 
 ================================================================================
 / 대부분의 파이프라인은 위의 3단계를 좀 더 세밀하게 구분(base calling and initial QC, /
@@ -191,7 +191,7 @@ Overall pipeline for SNP/Indel calling
 / of SNP candidate 등)하여 데이터 분석을 진행한다 [13, 16, 17]. /
 
 Detail steps of 3rd following "data analysis" procedure
-/home/young/Pictures/2019_06_07_08:51:44.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_08:51:44.png' alt=''><xmp>
 
 - base calling and initial QC
 - alignment to reference
@@ -238,13 +238,13 @@ FASTQ file from NGS
 / 표시한다 [그림 2]. 따라서 둘째 줄과 넷째 줄은 같은 개수 정보로 구성된다. /
 
 ================================================================================
-/home/young/Pictures/2019_06_07_10:26:40.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:26:40.png' alt=''><xmp>
 
 - FASTQ file for "each read" is composed of 4 sentences
-/home/young/Pictures/2019_06_07_10:27:56.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:27:56.png' alt=''><xmp>
 
 - First row (title identifier description) starts with @
-/home/young/Pictures/2019_06_07_10:28:36.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:28:36.png' alt=''><xmp>
 
 - First row (title identifier description):
   - used platform
@@ -253,15 +253,15 @@ FASTQ file from NGS
   - 2: paired-end: reverse (in Illumina case)
 
 - Second row is "decoded sequence"
-/home/young/Pictures/2019_06_07_10:31:07.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:31:07.png' alt=''><xmp>
 
 - Third row (as + description) starts with +
-/home/young/Pictures/2019_06_07_10:33:02.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:33:02.png' alt=''><xmp>
 
 - + description explains miscellaneous information
 
 - Forth row is quality score value with respect to "decoded sequence in second row"
-/home/young/Pictures/2019_06_07_10:35:01.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:35:01.png' alt=''><xmp>
 
 - Length of second row = length of forth row
 
@@ -279,10 +279,10 @@ Illumina platform:
 
 ================================================================================
 - FASTQ_file_1_for_forward_end
-/home/young/Pictures/2019_06_07_10:37:06.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:37:06.png' alt=''><xmp>
 
 - FASTQ_file_2_for_reverse_end
-/home/young/Pictures/2019_06_07_10:37:26.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:37:26.png' alt=''><xmp>
 
 ================================================================================
 / FASTQ 파일이 포함하고 있는 염기서열은 SNP/Indel calling을 위한 후속 분석 과정들에 /
@@ -316,7 +316,7 @@ Length of the read increases
 증가함에 따라 오류율의 변동이 심하고, 후속 분석을 위한 데이터로 사용하기 어려운 매우 큰
 오류의 염기도 포함됨을 의미한다.
 
-/home/young/Pictures/2019_06_07_10:49:00.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:49:00.png' alt=''><xmp>
 
 ================================================================================
 / 대부분의 분석 파이프라인은 후속 분석의 정확도를 높이기 위해 NGS 염기서열의 정확도를 /
@@ -360,7 +360,7 @@ Software for accuracy-management
 - qrqc
   - R
 
-/home/young/Pictures/2019_06_07_10:56:28.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_10:56:28.png' alt=''><xmp>
 
 ================================================================================
 / 특히 정확도가 낮은 염기를 FASTQ 파일에서 제거하는 작업을 /
@@ -463,7 +463,7 @@ Software using hasing
   - Stampy
 
 ================================================================================
-/home/young/Pictures/2019_06_07_11:39:43.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_11:39:43.png' alt=''><xmp>
 
 ================================================================================
 / 정렬 알고리즘의 성능은 처리량(throughput)과 정확도(accuracy)로 나타낼 수 있다. 처리량은 /
@@ -571,7 +571,7 @@ SAM file contains following information
 ================================================================================
 SAM/BAM file example
 
-/home/young/Pictures/2019_06_07_12:16:19.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_12:16:19.png' alt=''><xmp>
 
 ================================================================================
 / 정렬 여부에 대한 중요한 정보는 bitwise flags에 포함되어 있는데, 모든 /
@@ -587,7 +587,7 @@ Important information about the alignment
 ================================================================================
 Most important 3 types of alignment
 
-/home/young/Pictures/2019_06_07_12:24:18.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_12:24:18.png' alt=''><xmp>
 
 Type1: read are uniquely mapped to reference sequence
 When: accuracy of read's sequence is high
@@ -679,7 +679,7 @@ alignment post processing
   - SAMtools
   - Picard
 
-/home/young/Pictures/2019_06_07_12:49:56.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_12:49:56.png' alt=''><xmp>
 
 ================================================================================
 / SOAPsnp는 /
@@ -853,7 +853,7 @@ heterozygous:
 ================================================================================
 VCF file example which is obtained via SAMtools
 
-/home/young/Pictures/2019_06_07_13:56:45.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/Gene_sequencing/Next_generation_sequencing/Bioinformatics_driven_analysis_on_next_generation_DNA_sequence_data/pics/2019_06_07_13:56:45.png' alt=''><xmp>
 
 ================================================================================
 / 변이 추출을 통해 얻어진 SNP/Indel은 잠재적인 것으로 모두 유의한 유전변이라고 간주하기 /
@@ -959,7 +959,6 @@ Pipeline which is used for "1,000 genome project" is considered as standard
 The Genome in a Bottle Consortium provides standard data for DNA sequencing
 
 ================================================================================
-
 
 </xmp>
    </BODY>
