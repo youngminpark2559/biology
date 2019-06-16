@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=II63RgH0ukE
+/mnt/1T-5e7/mycodehtml/Biology/SangSooKim/Bioinformatics_basic/004/001_Variant_annotation_overview/main.html
+
+================================================================================
+Step: 
+identification: find variant
+validation: found variant is correctly found?
+annotation: write note on the found variant
+
+================================================================================
+variant_file=Roche_454_gsMapper_software()
+variant_file: 
+- 454HCDiff file
+- find all variants which exist in only sample, by comparing with "(human genome) reference sequence"
+
+================================================================================
+15 Anotations:
+column1: novelty, dbSNP database has sequence or totally new one?
+column2: depth of coverage
+column3: quality score
+column4: amino acid physiochemical properties
+column5: class of change
+column6: phylogenetic conservation based on UCSC PhastCons score
+column7: geni or genomic location
+column8: zygosity
+column9: effects on splice sites
+column10: polyphen score, prediction, and effect
+column11: PDB structures for this protein or a related protein
+column12: online mendelian inheritance in man disease associations for the gene containing the variant
+column13: protein annotation including protein ID, protein function, and description
+column14: gene annotation including chromosomal location, gene name, unique identifiers, and gene function
+column15: links to expression profiles derived from the GEO compendium based on protein ID to expression profile mapping provided by NCBI
+
+(15000_variant,15_annotations)
+
+================================================================================
+
+</xmp>
+   </BODY>
+</HTML>
