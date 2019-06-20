@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=zdWDM-o9ZXU
+/mnt/1T-5e7/mycodehtml/Biology/SangSooKim/Bioinformatics_basic/009/001_BlastP_to_Gene_Tree/main.html
+
+================================================================================
+Run BLASTP program at NCBI
+
+- Query: human's EGF-Receptor, canonical form
+- Database: RefSeq proteins
+- Exclude model sequences (XM/XP)
+
+================================================================================
+/home/young/Pictures/2019_06_20_16:29:40.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_16:30:07.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:56:40.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:57:13.png
+
+click
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:57:45.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:58:14.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:58:14.png
+
+click
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:58:38.png
+
+================================================================================
+1210 number of amino acid 
+
+================================================================================
+/home/young/Pictures/2019_06_20_17:59:21.png
+
+Protein sequence
+
+================================================================================
+How to get protein sequence
+
+Click FASTA
+/home/young/Pictures/2019_06_20_18:02:45.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:03:29.png
+
+================================================================================
+Click BLAST
+
+/home/young/Pictures/2019_06_20_18:13:36.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:14:10.png
+
+BLAST is the program which compares the 2 sequences
+
+Note that your goal, compare "human EGF-receptor sequence" with "RefSeq protein sequence"
+
+================================================================================
+Click 
+/home/young/Pictures/2019_06_20_18:17:29.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:17:50.png
+
+blastn: compare 2 genome sequences
+blastp: compare 2 protein sequences
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:18:33.png
+
+================================================================================
+Change database
+/home/young/Pictures/2019_06_20_18:18:54.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:19:16.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:19:33.png
+
+Exclude "model sequences"
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:19:59.png
+
+Exclude "uncultured/environmental sample sequences"
+
+uncultured/environmental sample sequences: microbe which can't grow in the lab
+
+================================================================================
+click 
+
+/home/young/Pictures/2019_06_20_18:21:11.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:21:32.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:22:21.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:22:52.png
+
+================================================================================
+Comparison result
+
+/home/young/Pictures/2019_06_20_18:24:37.png
+
+================================================================================
+Note that your query length was 1210 number of amino acid
+
+/home/young/Pictures/2019_06_20_18:25:09.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:25:42.png
+
+Meaning: 1210 amino acid matches to your input query protein sequence
+
+================================================================================
+Mouse, Identity score is only 90%
+/home/young/Pictures/2019_06_20_18:26:42.png
+
+================================================================================
+Click that one 
+
+/home/young/Pictures/2019_06_20_18:28:02.png
+
+Query: your input EGF receptor sequence
+Sbjct: mouse's EGF receptor sequence
+
+================================================================================
+Different sequence part
+
+/home/young/Pictures/2019_06_20_18:29:21.png
+
+================================================================================
+Meaning of +
+
+/home/young/Pictures/2019_06_20_18:29:53.png
+
+Amino acid V and amino acid I have difference of methyl group
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:30:58.png
+
+================================================================================
+Gap location
+
+/home/young/Pictures/2019_06_20_18:31:30.png
+
+================================================================================
+EGF receptor isoform a
+/home/young/Pictures/2019_06_20_18:41:28.png
+
+EGF receptor isoform b
+/home/young/Pictures/2019_06_20_18:41:39.png
+
+They are alternative splicing relationship
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:45:08.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:45:54.png
+
+Click taxonomy reports
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:46:19.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:47:20.png
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:50:42.png
+
+Click distance tree of results
+
+================================================================================
+/home/young/Pictures/2019_06_20_18:51:19.png
+
+================================================================================
+
+
+
+
+
+</xmp>
+   </BODY>
+</HTML>
