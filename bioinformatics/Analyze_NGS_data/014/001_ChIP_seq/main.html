@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=WzLsSCiOMTY
+
+================================================================================
+ChIP: [Ch]romatin [I]mmuno-[P]recipitation
+
+================================================================================
+Chromatin
+- Status of DNA (which consists of chromosome) packed
+
+Chromatin
+- Complex structure with packed DNA, RNA, proteins, etc
+
+DNA
+- nucleosome -> chromatin -> chromosome
+
+================================================================================
+Our interest
+- Interaction between "DNA" (which consists of chromatin) and "protein"
+- You want to know "which sequence part of DNA" is coupled to "which protein"
+
+================================================================================
+ChIP-seq method
+
+- You use "immuno" to precipitate the protein
+- You sequence "brought DNA along with protein"
+- You perform mapping "sequenced DNA" to reference genome
+- Then, you can know the part where DNA and protein are coupled
+
+================================================================================
+ENCODE (Encyclopedia of DNA Elements) project
+
+- After human genome project in 2003
+- you could know that there are 20000 genes which code protein
+- you could know that 20000 genes are 2% out of entire genome
+- 50% is repetitive sequence
+- And other 48%? Is it junk DNA?
+- 20000 genes are rather small number of genes
+- junk DNA controls axons?
+
+- ENCODE project, 2003
+- junk DNA has controling part?
+- target cell is 100 billions number of cells
+- because gene-expression is different in cell to cell
+
+- Various experimental tools
+- chromatin structure
+- open chromatin (DNase-seq and FAIRE-seq)
+- histone modifications and DNA-biding of over 100 transcription factor (ChIP-seq)
+- RNA transcription (RNAseq and CAGE)
+
+================================================================================
+/home/young/Pictures/2019_06_24_09:50:49.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_09:51:42.png
+
+nucleosome
+
+================================================================================
+/home/young/Pictures/2019_06_24_09:52:15.png
+
+Open chromatin
+
+Hypersensitive sites: places which can be cut easily by DNase enzyme
+
+================================================================================
+Overall step of ChIP-seq
+
+/home/young/Pictures/2019_06_24_09:55:33.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_09:56:55.png
+
+DNA is coupled to protein
+
+================================================================================
+/home/young/Pictures/2019_06_24_09:57:33.png
+
+Cross-link between protein and DNA
+- by using formaldehyde
+- to create covalent bond between protein and DNA
+
+- formaldehyde
+- reaction between protein's amin group to formaldehyde
+- it creates Schiff base
+- covalent bond between DNA's amin group to protein's amin group  
+- it doesn't break other covalent bond, it creates additional covalent bond
+- incubation in 70 cecius degree, induced covalent bond disappear
+
+/home/young/Pictures/2019_06_24_10:03:07.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:06:22.png
+
+Randomly cut DNAs by using sonication
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:06:54.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:08:16.png
+
+There are much various proteins which can couple with DNA
+
+You should select one protein
+
+And you perform "antigen-antibody reaction"
+for example, "antigen-antibody reaction" for transcription factor FOXA3 (protein)
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:10:36.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:12:27.png
+
+- Perform "antigen-antibody reaction" for transcription factor FOXA3 (protein) and antibody
+
+- You get NGS reads
+
+- You perform mapping NGS reads to reference genome 
+
+- You could know that NGS reads are much mapped to APOA2 gene part in 1st chromosome's reverse strand
+
+================================================================================
+Yellow: mapped result to forward strand
+Blue: mapped result to reverse strand
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:16:09.png
+
+FOXA3 binding site
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:18:39.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:21:07.png
+
+Left: various cell types
+
+Top menu: various experiments
+
+- Number in each square: number of dataset
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:22:10.png
+
+Left: cell types
+
+Top menu: antibody targets like histone protein
+
+================================================================================
+encodeproject.org
+
+genome.ucsc.edu/ENCODE
+
+================================================================================
+Mutant: permanent change
+
+================================================================================
+/home/young/Pictures/2019_06_24_10:59:42.png
+
+DNA methylation: Me is attached to C
+
+On histone protein: acetylation, methylation, phosphorylation, ubiquitination
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:02:48.png
+
+CpG: Cytosine, Guanine
+
+- CpG island: the place where CpG shows much more than normal
+
+- Many gene's promoter has CpG island
+
+- 5th location of Cytosine has high probability of methylation
+
+- CpG's reverse complement is also CpG
+
+- So, both strands (forward, reverse) have methylation
+
+- DNA methylation is started by DNA methyltransferase (DNMT) enzyme
+
+- When methylation occurs in gene's promoter's CpG island, gene expression is surpressed
+
+- There are 2 hypothesises about how methylation works
+
+- methylated CpG island in promoter can prevent the transcription factor to bind to promoter
+
+- Proteins (which have methyl-CpG-binding domain (MBD)) recognize methylated CpG
+and proteins are attached to methylated CpG
+They bring "histone deacetylase (HDAC)" or "chromatin remodeling proteins"
+And they convert histone structure (chromatin) into heterochromatin which is more tightly packing DNA
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:21:31.png
+
+- Use MBD protein (which recognize methylated-CpG island)
+
+- You can know methylated part by using sequencing
+
+- Like ChIP-seq, you cut DNA by using sonication
+
+- You induce precipitation by using antiboty against MBD
+
+- You perform sequencing
+
+- You perform mapping sequenced DNA to genome reference
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:33:17.png
+
+N: negative
+- CCDC8 gene has no methylation
+
+T: tumor
+- CCDC8 gene has much methylation
+
+CCDC8 gene has CpG island 
+
+CCDC8 gene helps p53 which is cancer-surpressing gene
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:40:35.png
+
+In the experiments using MBD protein,
+you can't know sequenced DNA piece has methylation on which base
+
+If you use bisulfite ($$$HSO_3^-$$$) on DNA,
+Cytosine is converted Cytosinsulphonate -> Uracilsulphonate -> Uracil
+
+On the other hand, 5-methylcytosine is not converted, but stay as it is
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:52:28.png
+
+Histone protein:
+4 kinds of protein
+  - H2A, H2B, H3, H4
+  - Entirely, 8 proteins (2*4)
+  - 8 proteins become the core of nucleosome
+
+Histone protein's branches can take chemicals, resulting in adjust of gene expression or other biological steps
+
+================================================================================
+/home/young/Pictures/2019_06_24_11:58:59.png
+
+High signal in RNA polymerase II (PolII) : places where transcriptions are performed actively
+
+H3 protein's 4th, 36th lysine amino acid branch's trimethylation signal is high
+
+27th lysine trimethylation is low
+
+This histone status is called "histone code"
+
+Combination of "histone code" controls gene expression and other biological step
+
+================================================================================
+/home/young/Pictures/2019_06_24_12:05:56.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_12:13:44.png
+
+================================================================================
+/home/young/Pictures/2019_06_24_12:15:06.png
+
+Almost 146 bases are wrapped around the histone
+
+
+
+
+
+
+
+
+
+
+
+
+</xmp>
+   </BODY>
+</HTML>
