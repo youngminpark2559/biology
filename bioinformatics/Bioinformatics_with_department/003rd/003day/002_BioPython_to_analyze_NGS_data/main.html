@@ -61,15 +61,15 @@ Biologically homology search for protein and necleotide
 - blastp (blastx): for protein (6 possible translations)
 
 ================================================================================
-/home/young/Pictures/2019_06_29_13:45:31.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:45:31.png' alt=''><xmp>
 
 ================================================================================
-/home/young/Pictures/2019_06_29_13:45:43.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:45:43.png' alt=''><xmp>
 
 ================================================================================
 Result from BLAST
 
-/home/young/Pictures/2019_06_29_13:46:08.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:46:08.png' alt=''><xmp>
 
 Length of query (protein or nucleotide) sequence: around 270 bp
 
@@ -95,7 +95,7 @@ makeblastdb -in swissprot -dbtype prot
 blastx -db swissprot -outfmt 7 < query.fasta > query.blout
 
 ================================================================================
-/home/young/Pictures/2019_06_29_13:52:50.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:52:50.png' alt=''><xmp>
 
 Formatting options
 - 0: traditional format, showing all alignments
@@ -120,10 +120,10 @@ for record in NCBIStandalone.Iterator(sys.stdin,blast_parser):
       print(alignment.sbjct)
 
 ================================================================================
-/home/young/Pictures/2019_06_29_13:57:58.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:57:58.png' alt=''><xmp>
 
 Result from BLAST
-/home/young/Pictures/2019_06_29_13:58:20.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_13:58:20.png' alt=''><xmp>
 
 ================================================================================
 import sys
@@ -149,7 +149,7 @@ Quiz
 - Run example
 python blast_summary.py 0.005 < my_quesry.blout.pairwise
 - Summarization example:
-/home/young/Pictures/2019_06_29_14:03:51.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/002_BioPython_to_analyze_NGS_data/pics/2019_06_29_14:03:51.png' alt=''><xmp>
 
 ================================================================================
 Subprocess
