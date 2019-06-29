@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=-0Xur_HtHaM&list=PLaE61CK5r6_l2fxVp3r3OP0fgTSTdQUoQ
+
+================================================================================
+from Bio.Seq import Seq
+from Bio.Alphabet import IUPAC
+
+# c a: default sequence string
+a=Seq("AGTCAGTC")
+print("a",a)
+/home/young/Pictures/2019_06_29_09:19:50.png
+
+================================================================================
+# c a: DNA sequence string
+a=Seq("AGTCAGTC",IUPAC.unambiguous_dna)
+print("a",a)
+/home/young/Pictures/2019_06_29_09:21:31.png
+
+a.complement
+/home/young/Pictures/2019_06_29_09:22:11.png
+
+a.reverse_complement
+/home/young/Pictures/2019_06_29_09:22:37.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_09:23:02.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_09:23:30.png
+
+IUPAC: institute which defines "alphabets"
+
+================================================================================
+IUPAC: definition for 20 amino acids (in form of alphabet)
+
+ExtendedIUPACProtein:
+some amino acids are added in alphabet form
+/home/young/Pictures/2019_06_29_09:25:08.png
+
+================================================================================
+For nucleotide, 
+- IUPACUnambiguousDNA
+- IUPACAmbiguousDNA: 
+one alphabet which indicates over-2 bases, for example, alphabet_1 indicates to both A and G
+
+- ExtendedIUPACDNA
+  - B: 5-bromouridine
+  - D: 5,6-dihydrouridine
+  - S: Thiouridine
+  - W: wyosine
+
+- IUPACAmbiguousDNA
+
+- IUPACAmbiguousRNA
+
+================================================================================
+SeqRecord object
+
+Attributes
+- .seq: Seq object
+- .id: ID which is used to identify the sequence
+- .name: title string
+- .description: human readable description
+- .letter_annotations: dict()
+- .annotations: dict()
+- .features: list of SeqFeature objects
+- .dbxrefs: list of database cross-reference
+
+================================================================================
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
+simple_seq=Seq("AGTC")
+simple_seq_r=SeqRecord(simple_seq)
+
+================================================================================
+SeqFeature object
+
+Attributes
+- .type: CDS, gene
+- .location
+- .qualifiers: dict(), additional information
+- .sub_features: list of sub SeqFeatures objects
+
+/home/young/Pictures/2019_06_29_09:37:58.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_09:41:57.png
+
+/home/young/Pictures/2019_06_29_09:42:20.png
+
+Download file
+
+================================================================================
+/home/young/Pictures/2019_06_29_09:43:29.png
+
+================================================================================
+SeqIO
+
+- For sequence input and output
+
+/home/young/Pictures/2019_06_29_09:44:57.png
+
+from Bio import SeqIO
+
+record_iterator=SeqIO.parse("input.gb","gb")
+
+for record in record_iterator:
+  print(record.format("fasta"))
+  # Or you can also use
+  # SeqIO.write(record,"outputfilename","fasta")
+
+================================================================================
+gi=SeqIO.parse("sequence.gb","gb")
+/home/young/Pictures/2019_06_29_10:31:50.png
+
+record=gi.next()
+/home/young/Pictures/2019_06_29_10:32:07.png
+
+record.id
+/home/young/Pictures/2019_06_29_10:32:44.png
+
+record.name
+/home/young/Pictures/2019_06_29_10:33:05.png
+
+record.description
+/home/young/Pictures/2019_06_29_10:33:28.png
+
+record.annotations
+/home/young/Pictures/2019_06_29_10:34:15.png
+
+f=record.features
+/home/young/Pictures/2019_06_29_10:34:42.png
+
+f.type
+# source
+
+f.location
+/home/young/Pictures/2019_06_29_10:35:35.png
+
+================================================================================
+print('record.format("gb")',record.format("gb"))
+# gene bank format
+
+print('record.format("fasta")',record.format("fasta"))
+# fasta format
+
+print('record.format("embl")',record.format("embl"))
+# embl format
+
+================================================================================
+Formats which you can use
+
+/home/young/Pictures/2019_06_29_10:37:57.png
+
+================================================================================
+Quiz
+
+- Read multiple FASTA files
+- Write reverse complement in FASTA format
+
+import sys
+from Bio import SeqIO
+
+for record in SeqIO.parse(sys.stdin,"fasta"):
+  record.seq=record.seq.reverse_complement()  
+  record.description=record.description+" reverse complemented"
+
+  print(record.format("fasta"))
+  # print(record.format("gb "))
+  # Error: fasta ---> gb can't be possible
+  # because fasta has some data which gb doesn't have
+
+================================================================================
+How to use Entrez (which is the name of NCBI database)
+
+BioPython's Entrez is for getting SeqRecord (data) from NCBI
+
+from Bio import Entrez
+
+Entrez.email="yours@yours.com"
+
+print(Entrez.einfo().read())
+
+/home/young/Pictures/2019_06_29_10:51:47.png
+
+All kinds of DB of Entrez, which you can use
+
+================================================================================
+from Bio import Entrez
+
+Entrez.email="yours@yours.com"
+
+handle=Entrez.esearch(db="pubmed",term="biopython")
+
+record=Entrez.read(handle)
+/home/young/Pictures/2019_06_29_10:56:07.png
+
+# PubMed's IDs
+# Each one is thesis paper
+record["IdList"]
+/home/young/Pictures/2019_06_29_10:56:32.png
+
+================================================================================
+# Organism: Cypripedioidease
+# Gene name: matK
+handle=Entrez.esearch(db="nucleotide",term="Cypripedioidease[Organ] AND matK[Gene]")
+
+record=Entrez.read(handle)
+
+record["Count"]
+
+record["IdList"]
+
+================================================================================
+from Bio import Entrez
+
+Entrez.email="yours@yours.com"
+
+handle=Entrez.efectch(db="nucleotide",id="186972394",rettype="gb",retmode="text")
+
+record=SeqIO.read(handle,"genbank")
+
+================================================================================
+from Bio import Entrez
+
+Entrez.email="yours@yours.com"
+
+handle=Entrez.esearch(db="pubmed",term="biopython")
+
+record=Entrez.read(handle)
+
+record["IdList"]
+/home/young/Pictures/2019_06_29_11:01:05.png
+
+idlist=record["IdList"]
+
+handle=Entrez.efectch(db="pubmed",id=idlist,rettype="medline",retmode="text")
+
+records=Medline.parse(handle)
+
+for record in records::
+  print(record["AU"])
+
+/home/young/Pictures/2019_06_29_11:02:50.png
+
+</xmp>
+   </BODY>
+</HTML>

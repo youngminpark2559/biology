@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=TdAA1MFSjog&list=PLaE61CK5r6_l2fxVp3r3OP0fgTSTdQUoQ
+
+================================================================================
+BLAST: Basic Local Alignment Search Tool
+
+Biologically homology search for protein and necleotide
+- blastn: for nucleotide
+- blastp (blastx): for protein (6 possible translations)
+
+================================================================================
+/home/young/Pictures/2019_06_29_13:45:31.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_13:45:43.png
+
+================================================================================
+Result from BLAST
+
+/home/young/Pictures/2019_06_29_13:46:08.png
+
+Length of query (protein or nucleotide) sequence: around 270 bp
+
+- HSP: high score position
+
+================================================================================
+Install BLAST
+
+sudo apt-get install ncbi-blast+
+
+# Download data file
+wget ftp://ftp.ncbi.nih.gov/blast/db/FASTA/swissprot.gz
+
+# Uncompress data file
+gunzip swissprot.gz
+
+# Create data format which can be consumed in BLAST
+makeblastdb -in swissprot -dbtype prot
+
+# outfmt: output format is 7th one
+# query.fasta: input file
+# query.blout: output file
+blastx -db swissprot -outfmt 7 < query.fasta > query.blout
+
+================================================================================
+/home/young/Pictures/2019_06_29_13:52:50.png
+
+Formatting options
+- 0: traditional format, showing all alignments
+- 5,6,7: much used
+
+================================================================================
+Parse output file
+
+import sys
+from Bio.Blast import NCBIStandalone
+
+blast_parser=NCBIStandalone.BlastParser()
+
+for record in NCBIStandalone.Iterator(sys.stdin,blast_parser):
+  for alignment in record.alignments:
+    for hsp in alignment.hsps:
+      print(alignment.title)
+      print(alignment.length)
+      print(alignment.expect)
+      print(alignment.query)
+      print(alignment.match)
+      print(alignment.sbjct)
+
+================================================================================
+/home/young/Pictures/2019_06_29_13:57:58.png
+
+Result from BLAST
+/home/young/Pictures/2019_06_29_13:58:20.png
+
+================================================================================
+import sys
+from Bio.Blast import NCBIXML
+
+for record in NCBIXML.parse(sys.stdin):
+  for alignment in record.alignments:
+    for hsp in alignment.hsps:
+      print(alignment.title)
+      print(alignment.length)
+      print(alignment.expect)
+      print(alignment.query)
+      print(alignment.match)
+      print(alignment.sbjct)
+
+================================================================================
+Quiz
+
+- You obtain result from BLAST
+- You insert that result into pipeline
+- You shuld get summrization of BLAST result
+- Contraint: expected_value<0.005
+- Run example
+python blast_summary.py 0.005 < my_quesry.blout.pairwise
+- Summarization example:
+/home/young/Pictures/2019_06_29_14:03:51.png
+
+================================================================================
+Subprocess
+
+Subprocess Python module allows you to spawn new processes,
+you to connect to their input/output/error pipes,
+and you can obtain their return codes
+
+from subprocess import Popen,PIPE
+
+# Create new process, run command, prepare "pipe" to store result text
+p=Popen(['ls','-la'],stdout=PIPE)
+
+# Get result string from process
+output=p.communicate()[0]
+
+================================================================================
+ps -ef | grep zsh
+
+result of "ps -ef" becomes "input" to "grep zsh"
+
+================================================================================
+p1=Popen(['ls','-al'],stdout=PIPE)
+p2=Popen(['grep','zsh'],stdin=p1.stdout,stdout=PIPE)
+p1.stdout.close()
+
+output=p2.communicate()[0]
+
+================================================================================
+from Bio import SeqIO
+from subprocess import Popen,PIPE
+
+my_seq_record=SeqIO.parse("query.fasta","fasta")
+input_query=my_seq_record.format("fasta")
+
+p=Popen(["blastx","-db","swissprot","-outfmt","6"],stdin=input_query)
+output=p.communicate()[0]
+
+number_of_hsps=len(output.splitlines())
+
+================================================================================
+Quiz
+
+- You can search data in nucleotide_NCBI by using "specific given keyword from user"
+- You obtain 10 number of data
+- You search above data from swissprot_DB by using blastx
+- You should answer how many number of proteins are
+- Constraint: E-value < $$$10^{-5}$$$, duplicated number of protein is not allowed
+- Run example:
+python count-concerned-proteins.py "apoptosis"
+# 356
+
+================================================================================
+Implementation
+
+vi search.py
+
+import sys
+from Bio import Entrez
+from Bio import SeqIO
+from subprocess import Popen,PIPE
+from Bio.Blast import NCBIStandalone
+StringIO
+
+================================================================================
+keyword=sys.argv[1]
+
+handle=Entrez.esearch(db="nucleotide",term=keyword)
+
+result=Entrez.read(handle)
+
+idlist=result["IdList"]
+
+================================================================================
+blast_parser=NCBIStandalone.BlastParser()
+
+================================================================================
+handle=Entrez.efetch(db="nucleotide",id=idlist,rettype="gb",retmode="text")
+
+for record in SeqIO.parse(hanlde,"gb"):
+  # print(record.format("fasta"))
+  input=record.format("fasta")
+
+  p=Popen(['blastx','-db','swissprot','-outfmt','0'],stdin=input)
+  
+  output=p.communicate()[0]
+
+  ================================================================================
+  total=0
+  for result in NCBIStandalone.Iterator(StringIO(output),blast_parser):
+    for alignment in result.alignments:
+      first_hsp=alignmentts.hsps[0]
+      if first_hsp<0.0005:
+        total+=len(result.alignments)
+
+================================================================================
+# Run
+python search.py apoptosis
+
+</xmp>
+   </BODY>
+</HTML>

@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=y42KBKvanRs&list=PLaE61CK5r6_l2fxVp3r3OP0fgTSTdQUoQ&index=2&t=727s
+
+================================================================================
+NGS sequencers
+
+/home/young/Pictures/2019_06_29_15:28:47.png
+
+================================================================================
+Application of NGS data
+
+/home/young/Pictures/2019_06_29_15:29:30.png
+
+================================================================================
+A high-level overview of NGS data processing
+
+/home/young/Pictures/2019_06_29_15:29:54.png
+
+- Base calling
+- Get FASTQ file
+- Perform alignment or assembly
+- Get SAM/BAM file
+- Perform variant calling
+- Get VCF file
+
+================================================================================
+Scope and schema of the Best practices
+
+/home/young/Pictures/2019_06_29_15:31:18.png
+
+- If you analyze 100 number of cancer patients, sample becomes 100 number of ones
+
+- You can see 100 number of samples in the left
+
+- Non-GATK: they can't be performed by GATK
+
+================================================================================
+FASTQ: raw unaligned reads
+
+1 recors takes 4 lines
+
+1th line: identifier, title, sequence name (read's name, group, etc)
+2nd line: sequence data (short in the case of NGS)
+3rd line: + (optional, sequence name again)
+4th line: associated quality score
+
+/home/young/Pictures/2019_06_29_15:39:09.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_15:39:37.png
+
+- How to read quality line is different per seqeuncers
+
+/home/young/Pictures/2019_06_29_15:40:15.png
+
+================================================================================
+from Bio import SeqIO
+
+for record in SeqIO.parse("test1.fq","fastq"):
+  print(record.format("qual"))
+  print(record.letter_annotations)
+
+  record.format("fastq-sanger") # This is same format as fastq
+  record.format("fastq-solexa")
+  record.format("fastq-illumina")
+
+================================================================================
+from Bio import SeqIO
+
+g=SeqIO.parse("sample_1.fq","fastq")
+
+record=g.next()
+/home/young/Pictures/2019_06_29_16:50:02.png
+
+print(record.format("fasta"))
+/home/young/Pictures/2019_06_29_16:50:57.png
+
+print(record.format("fastq"))
+/home/young/Pictures/2019_06_29_16:51:18.png
+
+record.letter_annotations
+
+record.format("qual")
+/home/young/Pictures/2019_06_29_16:53:05.png
+
+================================================================================
+The BAM format stores aligned reads and is technology independent
+
+/home/young/Pictures/2019_06_29_16:55:58.png
+
+================================================================================
+BAM headers: an essential part of a BAN file
+
+/home/young/Pictures/2019_06_29_16:56:33.png
+
+================================================================================
+To deal with BAM file, use SAMtools
+
+/home/young/Pictures/2019_06_29_16:57:14.png
+
+================================================================================
+PySAM
+
+/home/young/Pictures/2019_06_29_17:01:35.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_17:02:03.png
+
+================================================================================
+VCF files store variant information
+
+/home/young/Pictures/2019_06_29_17:03:37.png
+
+================================================================================
+VCFtools
+
+/home/young/Pictures/2019_06_29_17:04:48.png
+
+================================================================================
+PyVCF
+
+/home/young/Pictures/2019_06_29_17:05:15.png
+
+================================================================================
+Generic Sequence Format (GSF) Version 3
+
+/home/young/Pictures/2019_06_29_17:05:41.png
+
+/home/young/Pictures/2019_06_29_17:06:59.png
+
+================================================================================
+Parse GFF format file
+
+/home/young/Pictures/2019_06_29_17:13:24.png
+
+================================================================================
+bedtools
+
+/home/young/Pictures/2019_06_29_17:15:17.png
+
+================================================================================
+pybedtools
+
+/home/young/Pictures/2019_06_29_17:16:55.png
+
+================================================================================
+/home/young/Pictures/2019_06_29_17:18:13.png
+
+/home/young/Pictures/2019_06_29_17:19:13.png
+
+================================================================================
+Primer design tool
+
+/home/young/Pictures/2019_06_29_17:20:17.png
+
+/home/young/Pictures/2019_06_29_17:21:07.png
+
+</xmp>
+   </BODY>
+</HTML>

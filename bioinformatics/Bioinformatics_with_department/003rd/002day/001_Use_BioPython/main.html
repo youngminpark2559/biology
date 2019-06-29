@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+https://www.youtube.com/watch?v=YkDoA3lZb5k&list=PLaE61CK5r6_l2fxVp3r3OP0fgTSTdQUoQ
+
+================================================================================
+- Read FASTA format file (title + sequence)
+- Read sequence
+- Calculate GC content
+
+python reverse_complement.py > input.fast
+# 0.456 
+
+================================================================================
+import unittest
+import sys
+
+class Fasta:
+  def __init__(self,title,sequence):
+    self.title=title
+    self.sequence=sequence
+  
+  def get_gc_content(self):
+    gc=self.sequence.count("G")+self.sequence.count("C")
+    return gc/float(len(self.sequence))
+
+================================================================================
+class FastaTest(unittest.TestCase)::
+  def test_fasta_object(self):
+    my_fast=Fasta("test1","AGTC")
+    self.assertEqual(my_fasta.title,"test1")
+    self.assertEqual(my_fasta.sequence,"AGTC")
+  
+  def test_gc_content(self):
+    my_fast=Fasta("test1","AGTC")
+    self.assertEqual(my_fasta.get_gc_content(),0.5)
+
+================================================================================
+if __name__=="__main__":
+  # unittest.main()
+
+================================================================================
+sequence=[]
+for line in sys.stdin:
+  line=line.strip()
+
+  if line.startswith(">"):
+    title=line[1:]
+  else:
+    sequence.append(line)
+
+sequence="".join(sequence)
+my_fasta=Fasta(title,sequence)
+
+print(my_fasta.get_gc_content())
+
+================================================================================
+cat test.fasta
+/home/young/Pictures/2019_06_29_07:02:28.png
+
+================================================================================
+python rc2.py < test.fasta
+
+================================================================================
+Exercise
+
+- Read DNA sequence from one FASTA file
+- Print "reverse complement"
+
+python reverse_complement.py<input.fasta
+/home/young/Pictures/2019_06_29_07:10:44.png
+
+================================================================================
+import unittest
+import sys
+
+class Fasta:
+  def __init__(self,title,sequence):
+    self.title=title
+    self.sequence=sequence
+  
+  def get_gc_content(self):
+    gc=self.sequence.count("G")+self.sequence.count("C")
+    return gc/float(len(self.sequence))
+  
+  def reverse_complement(self):
+    base_pairs={
+      "A":"T",
+      "T":"A",
+      "G":"C",
+      "C":"G"}
+    
+    result=[]
+    for nucleotide in self.sequence:
+      result.append(base_pairs[nucleotide])
+    
+    return ''.join(reverse(result))
+      
+================================================================================
+class FastaTest(unittest.TestCase)::
+  def test_fasta_object(self):
+    my_fast=Fasta("test1","AGTC")
+    self.assertEqual(my_fasta.title,"test1")
+    self.assertEqual(my_fasta.sequence,"AGTC")
+  
+  def test_gc_content(self):
+    my_fast=Fasta("test1","AGTC")
+    self.assertEqual(my_fasta.get_gc_content(),0.5)
+  
+  def test_reverse_complement(self):
+    my_fast=Fasta("test1","AGTC")
+    # "ATGC"
+    self.assertEqual(my_fasta.reverse_complement(),"GACT")
+
+================================================================================
+def main():
+  sequence=[]
+  for line in sys.stdin:
+    line=line.strip()
+
+    if line.startswith(">"):
+      title=line[1:]
+    else:
+      sequence.append(line)
+
+  sequence="".join(sequence)
+  my_fasta=Fasta(title,sequence)
+
+  print(my_fasta.get_gc_content())
+
+if __name__=="__main__":
+  unittest.main()
+  # main()
+
+</xmp>
+   </BODY>
+</HTML>
