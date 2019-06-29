@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+http://e.biohackers.net/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C_%EB%A9%94%ED%83%80%EC%A7%80%EB%86%88_%EA%B8%B0%EB%B3%B8_%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC%EB%A7%81_%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0
+
+================================================================================
+- Suppose you have megenomics NGS data
+- And you want to do profiling (annotation) on that NGS data into Pandas data form
+
+================================================================================
+FASTA=convert(FASTQ_data)
+
+output=BLAST(FASTA)
+
+output includes "plant spicies identify number" and "plant sequence data"
+
+================================================================================
+NCBI SRA Toolkit
+trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
+
+In the case of me, following directory contains fastq-dump bin file
+/home/young/Downloads/sratoolkit.2.9.6-1-ubuntu64/bin
+
+# Create new directory
+cd NGS_test/
+
+# Run following to download NGS data
+/home/young/Downloads/sratoolkit.2.9.6-1-ubuntu64/bin/fastq-dump \
+SRR041657 \
+--split-files \
+--fasta 60
+
+- Used data: SRX019702 (Metagenomics of human microbiome) which had been opened in 2010
+- SRX019702 data is composed of 4 number of "run data", SRR04165~7
+- Meaning of above command: download run data SRR041657 in FASTA format
+- split-files: separate files per "pair"
+So, if there are 10 number of pairs, you will get 10 number of files
+
+================================================================================
+Install BLAST
+sudo apt-get install ncbi-blast+
+
+# Reference sequence database: swiss prot
+mkdir -p /NGS_test/swiss_prot
+wget ftp://ftp.ncbi.nlm.nih.gov/blast/db//swissprot.tar.gz
+tar zxvf swissprot.tar.gz
+
+================================================================================
+Run BLAST
+
+blastx \
+-db /home/young/NGS_test/swiss_prot_db/swissprot \
+-max_target_seqs 1 \
+-evalue 0.001 \
+-outfmt '6 std sgi staxids' \
+< /home/young/NGS_test/SRR041657_1.fasta \
+> /home/young/NGS_test/result/SRR041657_1.blout
+
+-max_target_seqs 1: you use only best match
+using only best match makes sense because you're doing profiling
+
+-outfmt '6 std sgi staxids: output format, print following data at the same time, "6th basic std", "GenBank's ID gi", "NCBI Taxon ID"
+
+SRR041657_1.fasta: query sequence (input data)
+
+swissprot: reference database
+
+================================================================================
+Profiling per "living creature" and "gene"
+
+import pandas as pd
+from subprocess import Popen, PIPE
+
+def len_fasta(filename):
+    p1 = Popen(['cat', filename], stdout=PIPE, stderr=PIPE)
+    p2 = Popen(['grep', '>'], stdin=p1.stdout, stdout=PIPE, stderr=PIPE)
+    p3 = Popen(['wc', '-l'], stdin=p2.stdout, stdout=PIPE, stderr=PIPE)
+
+    result, err = p3.communicate()
+
+    if p3.returncode != 0:
+        raise IOError(err)
+    
+    return int(result.strip().split()[0])
+
+def show_report(fasta_filename):
+    print("Number of reads: {}".format(len_fasta(fasta_filename)))
+
+    blout_filename = fasta_filename.replace('fasta', 'blout')
+
+    data = pd.read_table(blout_filename, 
+            names='qseqid sseqid pident length mismatch gapopen qstart ' \
+                  'qend sstart send evalue bitscore sgi staxids'.split(),
+    )
+
+    print("Number of annotations: {}".format(len(data)))
+
+    only_first_taxon = lambda s: s.split(';')[0]
+    data['staxids2'] = data['staxids'].apply(only_first_taxon)
+    subdata = data[['qseqid', 'staxids2', 'sgi']]
+    taxon_counts = subdata.groupby('staxids2').count().sort('qseqid', ascending=False)
+    print("Number of taxons: {}".format(len(taxon_counts)))
+
+    print("Top 10 taxons")
+    for tax_id, taxon in taxon_counts.iloc[:10].iterrows():
+        print(" - id {} has {} reads".format(tax_id, taxon['qseqid']))
+
+    gene_counts = subdata.groupby('sgi').count().sort('qseqid', ascending=False)
+    print("Number of genes: {}".format(len(gene_counts)))
+
+    print("Top 10 genes")
+    for gene_id, gene in gene_counts.iloc[:10].iterrows():
+        print(" - id {} has {} reads".format(gene_id, gene['qseqid']))
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("fasta", help="input FASTA file")
+    args = parser.parse_args()
+    show_report(args.fasta)
+
+================================================================================
+Number of reads of FASTA file is large
+So, loading large FASTA file can be slow in Python
+
+================================================================================
+So, this code used "wc -l" subprocess
+
+================================================================================
+See len_fasta()
+
+It's following command in Python
+"cat fastafile | grep '>' | wc -l"
+
+================================================================================
+Run example
+
+python3 metagenome_profiler.py -h
+
+usage: metagenome_profiler.py [-h] fasta
+
+positional arguments:
+  fasta       input FASTA file
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================
+- How to run
+python3 metagenome_profiler.py SRR041657_1.fasta
+
+- Output
+Number of reads: 163642
+Number of annotations: 1574
+
+Number of taxons: 361
+Top 10 taxons
+ - id 226186 has 304 reads
+ - id 435590 has 174 reads
+ - id 272559 has 118 reads
+ - id 224308 has 71 reads
+ - id 295405 has 57 reads
+ - id 83333 has 55 reads
+ - id 435591 has 28 reads
+ - id 242619 has 26 reads
+ - id 3702 has 23 reads
+ - id 71421 has 21 reads  
+
+Number of genes: 1190
+Top 10 genes
+ - id 81740756 has 32 reads
+ - id 597502304 has 8 reads
+ - id 33301170 has 7 reads
+ - id 81315088 has 7 reads
+ - id 37538299 has 6 reads
+ - id 1709284 has 5 reads
+ - id 54035840 has 5 reads
+ - id 55976660 has 5 reads
+ - id 81444500 has 5 reads
+ - id 61227671 has 5 reads
+
+================================================================================
+If you have multiple sample data, you can perform "profiling" on each sample
+And you can compare samples based on profiled report
+
+================================================================================
+In human gut, there are 2 major microbiomes
+- Bacteroides thetaiotaomicron VPI-5482(226186)
+- Bacteroides vulgatus ATCC 8482(435590)
+
+Gene which is most frequently observed is "SUSC_BACTN (Starch-utilization system protein C)"
+which is gene of "Bacteroides thetaiotaomicron VPI-5482(226186)"
+
+================================================================================
+Question
+How above pattern can be different in each person?
+
+</xmp>
+   </BODY>
+</HTML>
