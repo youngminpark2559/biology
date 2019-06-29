@@ -56,17 +56,17 @@ https://www.youtube.com/watch?v=y42KBKvanRs&list=PLaE61CK5r6_l2fxVp3r3OP0fgTSTdQ
 ================================================================================
 NGS sequencers
 
-/home/young/Pictures/2019_06_29_15:28:47.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:28:47.png' alt=''><xmp>
 
 ================================================================================
 Application of NGS data
 
-/home/young/Pictures/2019_06_29_15:29:30.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:29:30.png' alt=''><xmp>
 
 ================================================================================
 A high-level overview of NGS data processing
 
-/home/young/Pictures/2019_06_29_15:29:54.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:29:54.png' alt=''><xmp>
 
 - Base calling
 - Get FASTQ file
@@ -78,7 +78,7 @@ A high-level overview of NGS data processing
 ================================================================================
 Scope and schema of the Best practices
 
-/home/young/Pictures/2019_06_29_15:31:18.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:31:18.png' alt=''><xmp>
 
 - If you analyze 100 number of cancer patients, sample becomes 100 number of ones
 
@@ -96,14 +96,14 @@ FASTQ: raw unaligned reads
 3rd line: + (optional, sequence name again)
 4th line: associated quality score
 
-/home/young/Pictures/2019_06_29_15:39:09.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:39:09.png' alt=''><xmp>
 
 ================================================================================
-/home/young/Pictures/2019_06_29_15:39:37.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:39:37.png' alt=''><xmp>
 
 - How to read quality line is different per seqeuncers
 
-/home/young/Pictures/2019_06_29_15:40:15.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_15:40:15.png' alt=''><xmp>
 
 ================================================================================
 from Bio import SeqIO
@@ -122,90 +122,90 @@ from Bio import SeqIO
 g=SeqIO.parse("sample_1.fq","fastq")
 
 record=g.next()
-/home/young/Pictures/2019_06_29_16:50:02.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:50:02.png' alt=''><xmp>
 
 print(record.format("fasta"))
-/home/young/Pictures/2019_06_29_16:50:57.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:50:57.png' alt=''><xmp>
 
 print(record.format("fastq"))
-/home/young/Pictures/2019_06_29_16:51:18.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:51:18.png' alt=''><xmp>
 
 record.letter_annotations
 
 record.format("qual")
-/home/young/Pictures/2019_06_29_16:53:05.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:53:05.png' alt=''><xmp>
 
 ================================================================================
 The BAM format stores aligned reads and is technology independent
 
-/home/young/Pictures/2019_06_29_16:55:58.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:55:58.png' alt=''><xmp>
 
 ================================================================================
 BAM headers: an essential part of a BAN file
 
-/home/young/Pictures/2019_06_29_16:56:33.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:56:33.png' alt=''><xmp>
 
 ================================================================================
 To deal with BAM file, use SAMtools
 
-/home/young/Pictures/2019_06_29_16:57:14.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_16:57:14.png' alt=''><xmp>
 
 ================================================================================
 PySAM
 
-/home/young/Pictures/2019_06_29_17:01:35.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:01:35.png' alt=''><xmp>
 
 ================================================================================
-/home/young/Pictures/2019_06_29_17:02:03.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:02:03.png' alt=''><xmp>
 
 ================================================================================
 VCF files store variant information
 
-/home/young/Pictures/2019_06_29_17:03:37.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:03:37.png' alt=''><xmp>
 
 ================================================================================
 VCFtools
 
-/home/young/Pictures/2019_06_29_17:04:48.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:04:48.png' alt=''><xmp>
 
 ================================================================================
 PyVCF
 
-/home/young/Pictures/2019_06_29_17:05:15.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:05:15.png' alt=''><xmp>
 
 ================================================================================
 Generic Sequence Format (GSF) Version 3
 
-/home/young/Pictures/2019_06_29_17:05:41.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:05:41.png' alt=''><xmp>
 
-/home/young/Pictures/2019_06_29_17:06:59.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:06:59.png' alt=''><xmp>
 
 ================================================================================
 Parse GFF format file
 
-/home/young/Pictures/2019_06_29_17:13:24.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:13:24.png' alt=''><xmp>
 
 ================================================================================
 bedtools
 
-/home/young/Pictures/2019_06_29_17:15:17.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:15:17.png' alt=''><xmp>
 
 ================================================================================
 pybedtools
 
-/home/young/Pictures/2019_06_29_17:16:55.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:16:55.png' alt=''><xmp>
 
 ================================================================================
-/home/young/Pictures/2019_06_29_17:18:13.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:18:13.png' alt=''><xmp>
 
-/home/young/Pictures/2019_06_29_17:19:13.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:19:13.png' alt=''><xmp>
 
 ================================================================================
 Primer design tool
 
-/home/young/Pictures/2019_06_29_17:20:17.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:20:17.png' alt=''><xmp>
 
-/home/young/Pictures/2019_06_29_17:21:07.png
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/Bioinformatics_with_department/003rd/003day/003_BioPython_to_analyze_NGS_data/pics/2019_06_29_17:21:07.png' alt=''><xmp>
 
 </xmp>
    </BODY>
