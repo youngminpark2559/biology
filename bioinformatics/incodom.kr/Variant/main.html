@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+Original source
+http://www.incodom.kr/EST
+
+================================================================================
+Variation Study #
+
+@@ NGS(Next Generation Sequencing) 기술은 이제 유전체 연구의 밑바탕이 되고 있다.
+
+@@ 수백 Mega base에서 Giga base에 이르기까지 엄청난 양의 염기서열 분석을 수행해내면서 전체 염기서열 결정 및 re-sequencing을 통해 유전체 상의 여러 가지 변이 연구를 활발히 하게 하였다.
+
+@@ 이는 시간과 가격적으로 효과적인 마커를 개발할 수 있을 뿐만 아니라 개인 맞춤 의학에 빠르게 다가갈 수 있도록 하고 있다.
+
+NGS를 이용한 variation 연구는 대부분 양쪽 말단 서열을 동시에 해독하는 방법인 paired-end 시퀀싱을 사용하고, 평균 시퀀스 배수를 유전체의 20~40X로 시퀀싱을 진행하여 reference 서열에 정확한 맵핑과 정렬을 통해 비교하는 것이 보통이다.
+
+NGS driven variation research
+- Use paired-end sequencing
+- Perform 20 to 40x more sequencing
+- Comparison to reference sequence: mapping, alignment
+
+이 후 분석된 막대한 양의 정보들 가운데 의미 있는 SNP나 CNV 분석을 위한 이차적 분석에 전문적 수준의 생물정보학적 도구가 필수적으로 이용되고 있다.
+
+After mapping and alignment
+- Find meaningful SNP
+- Perform CNV analysis
+
+NGS reads를 이용한 variation 분석은 기본적으로 assembly에 기반을 둔다.
+
+NGS reads-driven variation analysis: depends on assembly
+
+특정 원하는 영역의 서열만을 골라 시퀀싱 하는 amplicon 시퀀싱 방법과 유전체 서열 전체를 대상으로 시퀀싱하는 두 가지 방법 모두 일차적으로 assembly를 수행하고 이후 서열간의 비교 분석을 통해 variation 분석을 진행한다.
+
+Amplicon sequencing
+- Select interest partial sequence
+- Perform sequencing
+
+General sequencing
+- Perform sequencing on entire gene data
+
+Assembly on "Amplicon sequencing and General sequencing" ---> Variation analysis
+
+@@ 따라서 대부분의 assembler는 assembly 뿐만 아니라 이후 SNP와 같은 variation 분석이 가능하도록 추가 기능을 제공하고 있다.
+
+@@ 그러나 서열 하나 정도의 variation이 아닌 넓은 범위에 걸쳐 발생하는 variation은 single reads 혹은 짧은 fragment의 paired-end 시퀀싱으로는 한계가 있다.
+
+@@ 이를 극복하기 위해 분석 목적에 따라 시퀀싱 타입을 다양하게 디자인하고 있다.
+
+
+그림 1. NGS reads를 alignment를 이용한 genome 서열 내의 variation 탐색
+다양한 fragment size 설정으로 SNP, CNV 및 구조적 variation 탐색이 가능하다.
+
+일반적으로, variation 분석에는 fragment size를 다양하게 구성한 paired end 시퀀싱을 추천한다.
+
+SNP 뿐만 아니라 CNV와 같은 넓은 지역에서의 variation과 구조적 변화까지 분석하기에는 길이에 제한이 있는 single reads 보다는 다양한 길이로 구성된 paired reads를 이용하여 기준이 되는 reference 서열에 모두 alignment가 수행될 수 있도록 하는 것이 효율적이기 때문이다.
+
+그림 1에서 보여 지는 것과 같이 reference 서열과 비교했을 때 1.5kb의 insertion이 존재하는 경우 500bp fragment의 paired-end 서열은 한쪽만 alignment 되고 다른 한쪽은 alignment가 수행되지 않을 것이다.
+
+그러나 2kb fragment paired-end 서열의 경우 양쪽 서열이 모두 reference 서열에 alignment 되면서 1.5kb의 insertion이 일어났음을 인지할 수 있게 된다.
+
+또한 양쪽 서열의 alignment 방향을 체크하여 inversion이 일어났는지도 확인이 가능하다.
+
+표 1에서는 분석 목적에 따른 최적화된 NGS reads 타입을 소개하고 있다.
+
+현재 paired-end의 fragment size는 200bp에서 5kb 까지 가능한 수준이다.
+
+그 중 2-5 kb의 long fragments의 시퀀싱은 fragment 양 끝 말단을 ligation 하여 circular 형태로 만들고 이후 다시 circular 형태의 서열을 400-600bp 길이로 절편을 만들어 그중 양쪽 끝 말단의 서열을 포함하고 있는 fragment만을 선별하여 시퀀싱을 수행한다.
+
+이러한 방법은 긴 서열 중 필요한 양쪽 끝 말단만을 추출하여 시퀀싱의 샘플로 이용하는 것으로 ‘mate paired ends’라 하며, 시퀀싱의 품질을 높이는 하나의 방법이 된다.
+
+표1
+
+결론적으로, ‘1-2. Assembly’ 에서도 언급 하였듯이 variation을 목적으로 분석하는 경우에는 분석하려는 서열들 간의 차이를 인지하고 이를 반영한 assembly가 수행되어야 한다.
+
+따라서 reference assembly 수행에서도 reference 서열과 시퀀싱 된 reads간의 차이는 SNP와 같은 서열하나일 수도 있고 CNV나 구조적 변형 같은 넓은 범위의 variation도 있기 때문에 표 1에서 언급한데로 다양한 길이의 fragment size로 분석하는 것이 언급된 모든 variation을 분석하기에는 가장 적합하다.
+
+SNP (Single Nucleotide Polymorphism) Analysis #
+인간 유전체 상에 가장 많이 존재하는 형태의 다형성은 유전체상의 특정 염기서열 하나의 변화이며, 흔히 SNP(Single Nucleotide Polymorphism) 또는 단일염기다형성이라고 부른다.
+
+한 논문에서는 SNP를 검출하는 방법을 다섯 가지로 요약해 나타냈다(표 2).
+
+이러한 방법들의 공통된 특징은 유전자 또는 염색체 부위를 증폭한 산물에 대한 염기서열을 분석하고 여러 염기서열을 정렬하여 염기서열 차이로서 SNP 존재 여부를 확인하는 것이다.
+
+이러한 관점으로 볼 때 정렬되는 서열이 많을수록 통계적으로도 안정적이며 명확한 variation을 분석할 수 있게 된다.
+
+따라서 제한된 시간 동안 가장 많은 서열을 생산할 수 있는 NGS는 이에 가장 부합하는 분석 도구가 될 것이다.
+
+표2
+
+또한 HapMap project에서 발표한 human 유전체의 SNP 분포를 확인해 보면 공개된 SNP의 약 34.1%에 해당하는 SNP가 30bp 안에 군집하여 분포한다는 것이다(그림 2).
+
+이는 종전의 마이크로어레이 방식에서 NGS 방식의 SNP 탐색으로의 전환이 매우 필수적임을 시사한다.
+
+그 이유는 마이크로어레이에 심어질 프로브 서열 내에 또 다른 SNP가 포함될 가능성이 매우 높으며 이러한 SNP는 고정되어 있는 프로브 서열로 인해 탐색이 되지 않는 치명적인 제한점을 NGS 방식의 시퀀싱을 통해 매우 효율적으로 해결할 수 있기 때문이다.
+
+그림 2
+
+그림 2. Human Genome의 SNP 분포 
+30bp 내에 많은 SNP가 군집을 이루며 모여 있다.
+
+Variation 분석에 적합하도록 시퀀싱이 수행되고 나면 실제 많은 reads를 이용한assembly가 수행되고 그 결과를 바탕으로 서열을 비교하여 variation 부분을 탐색하게 된다.
+
+그 중 SNP 분석의 경우, 시퀀싱 중에 일어난 오류에 기인한 mis-match인지 variation으로 인한 mismatch 인지를 구별하기 위한 여러 가지 파라미터를 설정하게 된다.
+
+Mismatch frequency 및 coverage(해당 위치의 서열 coverage)를 중심으로 잠재적인 SNP를 선별하게 된다.
+
+이때, 조금 더 정확한 SNP를 구별하기 위해 viewer를 통해 서열 퀄리티를 확인하는 경우도 발생하게 되는데, 다양한 플랫폼에서 생성된 reads들은 고유의 포맷을 유지하고 있고 대부분의 open source로 제공되는 프로그램들은 특정 플랫폼의 데이터만을 다루도록 하고 있어 이를 확인하기에는 어려움이 따른다.
+
+또한 특정 SNP가 cSNP 인지 여부나 더 나아가 단백질 서열까지 변화되는 synonymous SNP 인지 여부를 판단하기에는 생물정보학자의 도움이 절실히 요구된다.
+
+그러나 이러한 과정 모두를 해결해 줄 수 있는 프로그램들이 계속해서 개발되어지고 있다.
+
+그 중 CLC NGS Cell과 CLC Genomics Workbench는 NGS 데이터의 assembly와 사용자 편의의 인터페이스를 통해 분석된 SNP의 아미노산 서열 변화 확인을 위한 translation 분석, SNP 검증을 위한 PCR 프라이머 디자인, in-silico 클로닝 등의 통합 분석을 생물정보 전문가가 아닌 일반 연구자들 스스로 진행할 수 있도록 하고 있다.
+
+뿐만 아니라 assembly를 수행할 때 reference 서열을 이미 annotation이 완료된 ‘.gbk’ 데이터로 진행할 수 있어, SNP로 생각되는 유전자의 위치 및 이미 등록된 SNP 정보들까지도 표시하여 함께 확인할 수 있기 때문에 NGS 기술을 이용한 SNP 분석에 추천할 만한 분석 파이프라인이라고 하겠다(그림 3).
+
+그림 3
+
+그림 3. SNP 탐색을 위한 CLC Genomics Workbench
+
+CNV (Copy Number Variation) Analysis #
+SNP가 유전적 다형성의 대명사로 여겨졌지만 이외에도 정상 표현형인 인간의 유전체에 유전자 복제 수(copy number) 변이가 존재하여 유전적 다양성에 기여하고, 암 또는 많은 질병 감수성과도 연관될 가능성이 높다는 연구 결과가 보고되면서 유전체의 구조적 변이에 대한 관심이 대두되었다.
+
+CNV(Copy Number Variants)는 reference 유전체와 비교해서 copy number의 차이를 보이는 1kb 이상의 DNA 조각으로 정의하며, 평균 크기는 29kb에서 523kb 정도로 예상된다고 한다.
+
+현재 전체 유전체에서 CNV를 발굴하는 방식 중 가장 흔히 사용되는 방식은 CGH (comparative genomic hybridization)의 원리에 DNA 칩의 기술을 접목시킨 array-CGH이다.
+
+마이크로어레이 기반 CGH 실험 분석 목적은 모든 유전체 안에서 각각의 유전자 조각들이 반복 횟수 변화를 보이는 부분을 선별해 내거나 반복 횟수의 양적 변화를 찾는 것이다.
+
+이렇게 마이크로어레이 플랫폼을 이용해 발굴된 CNV는 분석에 이용된 플랫폼 의존 특성을 가지게 되어 최종 데이터의 질적인 측면과 연관되어 분석 결과의 치우침 문제를 유발할 수 있다.
+
+또한 hybridization 효율이 프로브 마다 다양하고, 실제 copy number의 프로브 서열이 아닐 가능성도 고려해야 하는 한계에 봉착하였다.
+
+이에 이를 극복할 만한 대안이 필요한 상황에서 NGS 기술의 보급은 CNV 발굴의 차세대 플랫폼으로 등장하였다.
+
+앞서 언급된 NGS 기술을 통한 SNP 분석과 마찬가지로 유전체 서열과 다양한 fragment size의 paired-end reads를 assembly 함으로써 시퀀싱 coverage를 이용한 잠재적인 CNV를 분석할 수 있다(그림 4).
+
+그림 4
+
+그림 4.
+
+aCGH와 CNV-seq 방법의 분석 과정 비교
+
+그러나 SNP와 같이 하나의 염기서열 차이로 변이를 확인하는 것이 아니기 때문에 assembly 분석 시 시퀀싱 오류로 인하여 다른 부분에 정렬되어 잘못된 variation을 검출하게 되는 가능성도 배제할 수는 없다.
+
+따라서 최근 Robust 통계 모델을 기본으로 하면서 aCGH와 NGS 기술의 이점들만 조합하여 효율적인 CNV 분석에 대한 논문이 발표되었고 이러한 방법을 이용하여 두 개체(Dr.
+
+J.
+
+Craig Venter와 Dr.
+
+James Watson) 사이의 CNV를 분석한 평가 결과도 함께 확인할 수 있어 이 후 aCGH와 NGS 기술을 접목한 CNV 분석 방법이 충분히 발전할 것으로 생각된다.
+
+이렇게 진행한 연구 방법과 결과들은 웹사이트를 통하여 무료로 이용할 수 있다(http://tiger.dbs.nus.edu.sg/CNV-seq).
+
+Targeted Sequencing(Sequence Capture) #
+최근 염기서열 분석은 전체 유전체의 염기서열 분석에만 치중하지 않고, 관심이 있는 특정 유전체의 일부분을 분석하고자 하는 경향이 대두되고 있다.
+
+또한 NGS가 출현하면서 염기서열 분석의 작업량이 증가하자 PCR을 이용한 타겟 시퀀싱에서 병목현상을 일으키기 시작하였다.
+
+이러한 문제를 해결하기 위해 ‘Sequence Capture’라는 기술이 개발되었고 Roche NimbleGen에서 처음 상용화 되어 관심 있는 특정 유전체의 일부분을 선택적으로 분석을 할 수 있어 NGS를 이용한 유전체 분석에서 중요한 부분을 차지하게 이르렀다.
+
+Sequence Capture 기술은 타겟으로 하는 유전체의 각 부위와 상보적으로 결합하도록 디자인된 프로브가 올려져있는 DNA 칩과 분석하고자 하는 샘플의 유전체 서열간의 hybridization을 진행하여 특이적으로 결합한 DNA 절편들을 분리 후 NGS를 이용하여 직접적으로 시퀀싱을 진행하는 방식이다(그림 5).
+
+그림 5
+
+그림 5.
+
+Sequence Capture 원리
+Genome 서열을 무작위 적으로 절단하여 엑손 영역만이 프로브로 심겨진 DNA chip에 hybridization한다.
+
+이 후 DNA chip의 프로브 서열과 결합된 유전체의 엑손 서열을 chip에서 분리하여 NGS 방식의 시퀀싱으로 서열을 결정한다.
+
+NGS로 염기서열을 분석하기 때문에 타겟 서열의 coverage가 굉장히 많이 향상되어 원하는 부분의 정확한 서열 정보를 얻을 수 있다.
+
+이러한 Sequence Capture 방법을 이용하여 워싱턴주립대학과 Agilent사의 연구팀이 공동으로 Target Capture Array로부터 Illumina GA를 사용하여 8명의 HapMap Individual과 4명의 희귀질환인 Freeman-Sheldon syndrome (FSS)을 가진 환자의 엑손 영역만을 시퀀싱하여 protein coding variation을 찾은 연구를 수행하였다.
+
+그 결과 Freeman-Sheldon syndrome(FSS)의 원인 유전자로 알려진 MYHS 유전자만이 정상인과 환자 사이에서 차이를 보인다는 것을 확인하였다[7].
+
+Human의 전체 유전체는 30억 염기쌍이지만 그 중 유전자 영역인 엑손은 전체 염기의 약 1%에 해당하는 3천만 염기쌍 정도 이다.
+
+NGS 기술로 인해 유전체 시퀀싱이 쉽고 빠르게 되었다고는 하지만, 아직 높은 비용이기 때문에 이러한 엑손 시퀀싱으로 유전체 전체를 대상으로 보고자 하는 영역만을 보다 빠르고 저렴하게 분석할 수 있다는 것이 매우 고무적이라 하겠다.
+
+Variation Database #
+다양하게 얻어진 각종 variation 데이터들은 기존에 구축되어진 데이터베이스와 비교하거나 이미 알려진 유전자 구조 정보를 활용함으로써 조금 더 유용한 정보를 얻을 수 있다.
+
+따라서 대량의 유전변이형 정보를 체계적으로 수집하고 일반 연구자에게 전달하기 위해서는 다양한 variation 데이터베이스를 구축하여 언제든 활용할 수 있는 시스템으로 서비스 되어져야 한다.
+
+현재 다수의 연구기관 및 연구그룹에서 SNP 및 여러 variation 관련 데이터베이스가 만들어져 운영되고 있다(표 3).
+
+표3
+
+dbSNP는 미국 NCBI에서 관리하는 세계 최대의 SNP 데이터베이스로 rs#를 부여받은 human의 SNP만해도 7,344,853개(build130, 2009년 12월)가 수록되어 있다.
+
+따라서 이렇게 축적된 대량의 SNP 데이터가 연구자들에게 제공됨에 따라 새롭게 특정 후보 유전자의 SNP를 다시 발굴할 필요 없이 대부분의 SNP 정보를 데이터베이스를 통하여 쉽게 이용할 수 있다(그림 6).
+
+그림
+
+또한 좀 더 나아가 HGMD는 문헌에 보고된 모든 생식세포내의 질병을 유발하는 돌연변이들과 질병관련/기능성 다형성들을 기록하고 있다.
+
+사실상 이는 학계에서 이용 가능한 중추적인 질병관련 돌연변이 데이터베이스로써, 암호화 시의 단일 염기쌍 치환(예, 미스센스 돌연변이와 넌센스 돌연변이), 인간 핵 유전자의 조절 및 접합관련 부위, 미세결실과 미세삽입, 결실과 삽입(indels), 반복 확장, 그리고 심한 유전자 손상(결실, 삽입 그리고 복제) 및 복합적 유전자 재배열에 관한 자료들을 제공하고 있다.
+
+학술적으로 또는 비영리적인 목적으로 사용자 등록 후 무료로 이용 가능하다.
+
+단, 이 돌연변이의 정보들은 데이터베이스에 최초로 추가된 후 2년 6개월 후에 공용 웹사이트에서 제공되기 때문에 최신 버전을 이용하려면 BIOBASE GmbH사로부터 인증을 받아 상업적 및 학술적 이용자에게 제공된다.
+
+최신 돌연변이 자료 이외에도, HGMD Professional은 공용 사이트에서 제공하지 않는 첨단 검색 도구와 유전자 및 돌연변이에 대한 특별한 정보를 부가적으로 제공하고 있다(그림 7).
+
+HGMD Professional은 3개월 단위로 업데이트된다.
+
+그 외 variation 정보를 위한 데이터베이스는 앞서 소개한 몇몇 큰 데이터베이스와 수백 가지의 유전자 각각에 대한 특화된 데이터베이스로 다원화 하여 존재하고 있다.
+
+이들 정보의 통합 필요성이 인식 되면서 2006년 6월부터 전 인류의 유전자 변이에 대한 정보를 모으고 이를 카달로그화 하여 제공하고자 하는 국제적인 Human Variome Project(HVP, http://www.humanvariomeproject.org)가 출범되었고, 이를 통해 variome 연구는 개인의 유전적 차이 및 질병과의 관련성이 더 정확하게 밝혀져 질병에 대한 개인 간 차이 발생에 대해 더 세밀하고 진보한 해답을 얻을 수 있을 것으로 전망하고 있다.
+
+
+</xmp>
+   </BODY>
+</HTML>

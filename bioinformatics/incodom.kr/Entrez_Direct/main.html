@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+Original source
+http://www.incodom.kr/Entrez_Direct
+
+================================================================================
+Entrez Direct (EDirect)
+- CLI version of NCBI E-utilities
+- Functions for search data ((publication, sequence, structure, gene, variation, expression) from Entrez databases 
+
+================================================================================
+Install EDirect
+
+cd ~
+perl -MNet::FTP -e '$ftp = new Net::FTP("ftp.ncbi.nlm.nih.gov", Passive => 1); $ftp->login; $ftp->binary; $ftp->get("/entrez/entrezdirect/edirect.zip");'
+gunzip -u -q edirect.zip
+rm edirect.zip
+export PATH=$PATH:$HOME/edirect
+./edirect/setup.sh
+
+================================================================================
+Example
+
+- Keyword: "somatic copy number"
+- Who wrote most number of papers related to keyword
+
+esearch -db pubmed -query "somatic copy number" |
+\ efetch -format xml | xtract -pattern PubmedArticle -block Author -sep " " -tab "\n" -element LastName,Initials |\
+sort-uniq-count-rank | head
+
+30  Meyerson M
+25  Zhang J
+24  Getz G
+16  Beroukhim R
+16  Li J
+16  Wang J
+16  Zhang Y
+15  Wilson RK
+15  Zhang Z
+14  Wang Y
+
+================================================================================
+Functions
+
+esearch
+- input keywords into specific database to search data
+
+elink
+- search links of data inside of database or between databases
+
+efilter
+- Detail search on result
+
+efetch
+- download specific data in the format you want
+
+xtract
+- parse XML format file into table format data
+
+einfo
+- search "indexed field" from Entrez
+
+epost
+- upload identifier number, sequence accession number
+
+nquire
+- send direct URL request to the server
+
+</xmp>
+   </BODY>
+</HTML>
