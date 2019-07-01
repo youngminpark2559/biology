@@ -50,7 +50,6 @@ MathJax.Hub.Config({
    </HEAD>
    <BODY>
 <xmp>
-
 https://www.youtube.com/watch?v=5o1foQX8wvg
 /mnt/1T-5e7/mycodehtml/Biology/SangSooKim/Bioinformatics_basic/005/001_Nucleotide_RefSeq_and_translation/main.html
 
@@ -70,8 +69,12 @@ X chromosome
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:27:05.png' alt=''><xmp>
 
+Configure "Base position"
+
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:27:26.png' alt=''><xmp>
+
+Put the "Base position"
 
 Click Search
 
@@ -93,9 +96,6 @@ Click rs387... reference SNP's ID
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:30:59.png' alt=''><xmp>
 
 ================================================================================
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:35:10.png' alt=''><xmp>
-
-================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:41:36.png' alt=''><xmp>
 
 RefSeq accession numbers
@@ -103,32 +103,32 @@ RefSeq accession numbers
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:42:03.png' alt=''><xmp>
 
-Use NC for genomic molecules
+To represent sequence of genomic molecules, use NC
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:42:40.png' alt=''><xmp>
 
-mRNA
+To represent mRNA sequence, use NM
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:43:02.png' alt=''><xmp>
 
-Protein
+To represent protein sequence, use NP
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:43:22.png' alt=''><xmp>
 
-Non-coding (protein) RNA
+To represent non-coding RNA sequence (which doesn't code the protein), use NR
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:43:54.png' alt=''><xmp>
 
-model
+To represent mRNA and protein sequence, but when it starts with "X", it's a model
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:44:23.png' alt=''><xmp>
 
-NC
+NC: chromosome
 
 ================================================================================
 </xmp><img src='https://raw.githubusercontent.com/youngminpark2559/biology/master/bioinformatics/basic/SangSooKim/005/001_Nucleotide_RefSeq_and_translation/pics/2019_06_08_20:45:09.png' alt=''><xmp>
@@ -151,6 +151,83 @@ Click
 Database becomes Nucleotide
 
 ================================================================================
+/home/young/Pictures/2019_07_01_08:50:13.png
+
+Total size of this DNA: 156040895 bp
+Linear DNA
+12-MAR-2015: updated date
+Version: 11
+
+================================================================================
+/home/young/Pictures/2019_07_01_08:55:00.png
+
+- Split X chromosome into 9 pieces
+- Sequence and analyze them in individual teams
+
+================================================================================
+/home/young/Pictures/2019_07_01_08:57:15.png
+
+Let's search the data with NM_001167
+
+/home/young/Pictures/2019_07_01_08:57:43.png
+
+================================================================================
+/home/young/Pictures/2019_07_01_08:58:13.png
+
+8460 bp mRNA
+Version: 3
+
+================================================================================
+/home/young/Pictures/2019_07_01_09:00:31.png
+
+CDS: coding sequence
+
+/home/young/Pictures/2019_07_01_09:01:09.png
+1...159: non coding sequence
+
+ATG: starting codon
+
+================================================================================
+Translate "3 base pairs" into protein
+/home/young/Pictures/2019_07_01_09:02:26.png
+
+================================================================================
+1...159: 5' UTR
+1654...: 3' UTR 
+
+UTR: untranslated region
+
+================================================================================
+/home/young/Pictures/2019_07_01_09:06:28.png
+
+In this mRNA, 608th base pair has potential variant (G ---> A)
+
+c608: in coding sequence, 608th base pair
+
+160th base pair: start base
+
+- Calculation
+160th bp, 1th coding base
+xth bp,   608th bp has potential SNP
+
+x=160th_bp+608th_bp-1
+x=767th_bp
+
+================================================================================
+/home/young/Pictures/2019_07_01_09:11:53.png
+
+This G is converted into A in SNP
+
+================================================================================
+Find "amino acid position" of this SNP
+
+(608th_bp-1)/3=203.333
+This SNP occurs in 203th codon
+
+Cys is converted into Tyr
+
+================================================================================
+
 
 </xmp>
    </BODY>

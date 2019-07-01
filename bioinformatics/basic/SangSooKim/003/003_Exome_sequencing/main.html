@@ -50,76 +50,140 @@ MathJax.Hub.Config({
    </HEAD>
    <BODY>
 <xmp>
-
-https://www.youtube.com/watch?v=TSe-kxFsgto
+https://www.youtube.com/watch?v=JgF3L9CNw5I
 /mnt/1T-5e7/mycodehtml/Biology/SangSooKim/Bioinformatics_basic/003/002_What_is_exome_Sanger_sequencing/main.html
 
 ================================================================================
-IRB: institutional review board
+How to find variants
 
-IRB checks morality of the research in the each company or school
+- See video
+https://www.youtube.com/watch?v=5VClehvKVw4
 
-================================================================================
-Exome is captured by using Roche Nimblegen HD2 machine
+- /home/young/Pictures/2019_06_12_13:19:33.png
 
-================================================================================
+- Small sequence reads, reference sequence (bottom) as standard genome sequence
+/home/young/Pictures/2019_06_12_13:20:18.png
 
+- Small sequence read is matched there
+/home/young/Pictures/2019_06_12_13:20:56.png
+  - Meaning
+    - That small sequence composed of 7 base pairs comes from that location of reference sequence
 
-DNA -> RNA -> (Exons, Introns are removed by splicing algorithm) -> mRNA -> (transcription) -> Protein
+- Second small sequence read is matched there
+/home/young/Pictures/2019_06_12_13:22:52.png
 
-================================================================================
-Gene: almost 20000 number of genes
+- /home/young/Pictures/2019_06_12_13:24:22.png
 
-One gene has almost 10 exons
+- Depth is 2 (excluding reference sequence)
+/home/young/Pictures/2019_06_12_13:24:38.png
 
-20000 * 10 = 200000 exons = Exome
+- In experiment, depth can be tens of layers, such as 20, 30, and sometimes even over 100
 
-cf) gene1 + gene2 + ... = genome
+- Suppose "substitution" applied read (substitution variant which someone has, unlike it, generally people have reference-sequence-type order)
+- Normal read
+/home/young/Pictures/2019_06_12_13:25:59.png
+- substitution applied read
+/home/young/Pictures/2019_06_12_13:26:53.png
 
-================================================================================
-Exonme capture: collects 200000 exons (without introns)
+- "substitution variant" is detected
+/home/young/Pictures/2019_06_12_13:28:07.png
 
-================================================================================
-How to do "exome capture"
+- See "deletion variant"
+- Normal one
+/home/young/Pictures/2019_06_12_13:29:08.png
+- "Deletion" applied variant
+/home/young/Pictures/2019_06_12_13:29:50.png
+- This case never be matched into any place of reference sequence
+- So, read is splited, to match to reference sequence (which is called split alignment)
+/home/young/Pictures/2019_06_12_13:29:50.png
+- "deletion" variant is detected
+/home/young/Pictures/2019_06_12_13:31:31.png
 
-/home/young/Pictures/2019_06_12_12:36:13.png
+- See "insertion" variant
+- normal
+/home/young/Pictures/2019_06_12_13:32:05.png
+- "insertion variant" read
+/home/young/Pictures/2019_06_12_13:32:39.png
+- Split alignment is used 
+/home/young/Pictures/2019_06_12_13:33:14.png
+/home/young/Pictures/2019_06_12_13:33:39.png
 
-- Onto that array chip, you embed all DNA sequences which you already know 
-
-================================================================================
-- Another illustration
-/home/young/Pictures/2019_06_12_12:37:31.png
-
-- Embeds all exons sequence (which you already know) onto the chip (gray plate)
-/home/young/Pictures/2019_06_12_12:38:03.png
-
-- Randomly cut sample DNA
-Then, some pieces have exons, but some other pieces will not have exons
-/home/young/Pictures/2019_06_12_12:39:10.png
-
-- You insert above "small DNAs" into the gray plate
-/home/young/Pictures/2019_06_12_12:41:06.png
-
-- DNA pieces which have exons will attatch to the gray plate
-DNA pieces which don't have exons will be swept away
-with collecting all exons which correspond to the DNA exon sequences which you already know (or which you're interested in)
-
-================================================================================
-Another way which uses beads
-
-- B stands for beads
-- You attach "exons" which you already know onto the bead
-- Then, you insert "small DNAs" into the bowl in which "beads" are located
-- Then, corresponding "exons" are attached to "existing DNA which is attached to the bead"
-/home/young/Pictures/2019_06_12_12:44:29.png
-
-- Then, you perform precipitation for the beads
-and capture the beads
-/home/young/Pictures/2019_06_12_12:49:14.png
-
-- In this way, you can collect exons
+- Insertion variant is detected
+/home/young/Pictures/2019_06_12_13:33:51.png
 
 ================================================================================
+- See another illustration for sequence alignment
+/home/young/Pictures/2019_06_12_13:38:31.png
+
+- Chromosom1 as reference sequence
+/home/young/Pictures/2019_06_12_13:39:05.png
+
+- One small sequence read
+/home/young/Pictures/2019_06_12_13:44:21.png
+  - Yellow parts: sequenced part
+  - Gray part: not sequenced part
+  - When you have "one DNA fragment",
+  machine reads it "from front to rear" and "from rear to front"
+  - If "one DNA fragment" is too long (such as over 200 bp)
+  some parts can't be read (?)
+  - So, not-read part is located in gray part (?)
+
+- Refernce sequence has "A"
+Fragments have "C"
+/home/young/Pictures/2019_06_12_13:47:20.png
+  - Meaning:
+    - Point mutation (or A to C substitution variant)
+    - Remaining parts are same to "reference sequence"
+
+- there are continuous "empty" part
+/home/young/Pictures/2019_06_12_13:48:53.png
+- This can be machine's error
+/home/young/Pictures/2019_06_12_13:49:15.png
+- This is "deletion variant" (Indel: insertion and deletion variants)
+
+================================================================================
+/home/young/Pictures/2019_06_12_13:51:46.png
+
+Both (homozygous) are deletion variant
+
+Depth 0
+
+================================================================================
+/home/young/Pictures/2019_06_12_13:52:28.png
+
+One is normal, one is deletion variant
+
+Depth is 1/2
+
+================================================================================
+/home/young/Pictures/2019_06_12_13:53:42.png
+
+Depth is more
+
+Gain (extra copy) variant
+
+================================================================================
+/home/young/Pictures/2019_06_12_13:54:16.png
+
+================================================================================
+Reads are mapped to both chromosome1 and chromosome5
+/home/young/Pictures/2019_06_12_13:54:50.png
+
+Cancer cell often shows this variant
+
+chromosome1 and chromosome5 has fusion due to disease?
+
+fusion point is called "translocation breakpoint"
+
+================================================================================
+Some fragments (like bateria or virus) are not mapped to human's reference sequence
+
+/home/young/Pictures/2019_06_12_13:57:29.png
+
+================================================================================
+Actual program for sequence alignment
+
+/home/young/Pictures/2019_06_12_13:59:18.png
 
 </xmp>
    </BODY>
